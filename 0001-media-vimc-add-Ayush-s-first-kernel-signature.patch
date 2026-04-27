@@ -1,0 +1,30 @@
+From 2a67659c828d8e9bfc3c984b573af5d4ae8cd634 Mon Sep 17 00:00:00 2001
+From: nerv-EvanG <ayush37735@gmail.com>
+Date: Mon, 27 Apr 2026 07:03:37 +0530
+Subject: [PATCH] media: vimc: add Ayush's first kernel signature
+
+This is a test patch to verify the kernel build and module loading
+process. It adds a print statement to confirm successful execution.
+
+Signed-off-by: nerv-EvanG <ayush37735@gmail.com>
+---
+ drivers/media/test-drivers/vimc/vimc-core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/test-drivers/vimc/vimc-core.c b/drivers/media/test-drivers/vimc/vimc-core.c
+index 15167e127..d654b978f 100644
+--- a/drivers/media/test-drivers/vimc/vimc-core.c
++++ b/drivers/media/test-drivers/vimc/vimc-core.c
+@@ -340,7 +340,8 @@ static int vimc_probe(struct platform_device *pdev)
+ 	const struct font_desc *font = find_font("VGA8x16");
+ 	struct vimc_device *vimc;
+ 	int ret;
+-
++	/* Ayush(nerv) first kernel patch */
++	pr_info("VMC: Probe function reached - Ayush's kernel is alive!\n");
+ 	dev_dbg(&pdev->dev, "probe");
+ 
+ 	if (!font) {
+-- 
+2.53.0
+
