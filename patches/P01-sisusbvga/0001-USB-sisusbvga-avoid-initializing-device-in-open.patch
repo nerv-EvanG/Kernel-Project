@@ -1,5 +1,5 @@
 From be50fa1b2def095afcaec4ca9eb885d99d8f0f6b Mon Sep 17 00:00:00 2001
-From: Ayush <ayush37735@gmail.com>
+From: Ayush <grimstonbusiness@gmail.com>
 Date: Sun, 6 Sep 2026 00:31:17 +0530
 Subject: [PATCH v1] USB: sisusbvga: avoid initializing device in open
 
@@ -15,7 +15,7 @@ performs blocking device initialization.
 
 Reported-by: syzbot+3bc656a9271e7c8a5c6b@syzkaller.appspotmail.com
 Closes: https://syzkaller.appspot.com/bug?extid=3bc656a9271e7c8a5c6b
-Signed-off-by: Ayush <ayush37735@gmail.com>
+Signed-off-by: Ayush <grimstonbusiness@gmail.com>
 
 ---
  drivers/usb/misc/sisusbvga/sisusbvga.c | 15 +++++++++------
@@ -23,5 +23,5 @@ Signed-off-by: Ayush <ayush37735@gmail.com>
 
 ---
 
-This file is an archive of the exact upstream submission. The
+This file is a portfolio archive of the submitted work. The
 upstream mailing-list thread remains authoritative for review status.
