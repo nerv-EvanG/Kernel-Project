@@ -29,8 +29,6 @@ This keeps the open callback focused on validating and opening an already initia
 
 **Commit:** `be50fa1b2def095afcaec4ca9eb885d99d8f0f6b`  
 **Subject:** `[PATCH v1] USB: sisusbvga: avoid initializing device in open`  
-**Author:** Ayush <ayush37735@gmail.com>  
-**Reported-by:** syzbot  
-**Status:** Submitted to the Linux USB mailing list and driver maintainers; not yet accepted.
+**Author:** Ayush <grimstonbusiness@gmail.com>  
 
 The upstream mailing-list thread is the authoritative source for review status. This repository mirrors the work for portfolio/documentation purposes only.
