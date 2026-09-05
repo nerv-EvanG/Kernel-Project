@@ -1,12 +1,12 @@
 From 2a67659c828d8e9bfc3c984b573af5d4ae8cd634 Mon Sep 17 00:00:00 2001
-From: nerv-EvanG <ayush37735@gmail.com>
+From: nerv-EvanG <grimstonbusiness@gmail.com>
 Date: Mon, 27 Apr 2026 07:03:37 +0530
 Subject: [PATCH] media: vimc: add Ayush's first kernel signature
 
 This is a test patch to verify the kernel build and module loading
 process. It adds a print statement to confirm successful execution.
 
-Signed-off-by: nerv-EvanG <ayush37735@gmail.com>
+Signed-off-by: nerv-EvanG <grimstonbusiness@gmail.com>
 ---
  drivers/media/test-drivers/vimc/vimc-core.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
