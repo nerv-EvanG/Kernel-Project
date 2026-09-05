@@ -1,0 +1,27 @@
+From be50fa1b2def095afcaec4ca9eb885d99d8f0f6b Mon Sep 17 00:00:00 2001
+From: Ayush <ayush37735@gmail.com>
+Date: Sun, 6 Sep 2026 00:31:17 +0530
+Subject: [PATCH v1] USB: sisusbvga: avoid initializing device in open
+
+The USB core holds minor_rwsem while invoking a USB character
+device's open callback. sisusb_open() can currently initialize the
+device while holding sisusb->lock, and that initialization performs
+synchronous USB I/O.
+
+High-speed devices are already initialized during probe. Treat a
+probe-time initialization failure as a probe failure instead of
+retrying initialization from open, so the open callback no longer
+performs blocking device initialization.
+
+Reported-by: syzbot+3bc656a9271e7c8a5c6b@syzkaller.appspotmail.com
+Closes: https://syzkaller.appspot.com/bug?extid=3bc656a9271e7c8a5c6b
+Signed-off-by: Ayush <ayush37735@gmail.com>
+
+---
+ drivers/usb/misc/sisusbvga/sisusbvga.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+---
+
+This file is an archive of the exact upstream submission. The
+upstream mailing-list thread remains authoritative for review status.

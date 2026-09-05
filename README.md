@@ -1,19 +1,45 @@
-## 🎬 System Forge (Video)
-See the 12-thread Ryzen 5625U in action during the v7.0.0+ kernel compilation:
-https://github.com/user-attachments/assets/9c113875-e722-46f6-a0d6-43d5abfba0d2
+# Linux Kernel Work
 
-## 📸 Verification Screenshots
-### Custom Signature in Kernel Logs
-Successfully verified the custom driver injection in the kernel ring buffer:
-https://github.com/user-attachments/assets/13b25838-9367-449a-ade1-96af69d32158
+Upstream Linux kernel development work by Ayush Yaduvanshi.
 
-### Professional Style Compliance
-Verified the patch against official Linux Kernel standards:
-https://github.com/user-attachments/assets/7296877d-bf09-40a6-8862-987766171bbf
-https://github.com/user-attachments/assets/4c18c461-aa60-4df4-b659-a1532856fe90
-https://github.com/user-attachments/assets/4eed1db5-8f56-42c4-b6d1-0d7cca248588
-https://github.com/user-attachments/assets/27a97223-1744-4962-88d4-b92e128c9df2
-https://github.com/user-attachments/assets/90cfc724-03cb-4b8c-b774-e3ab3e9c5176
-https://github.com/user-attachments/assets/8d3a83bb-8139-4b14-89b1-31a5304d0dc
+This repository is a **development portfolio and patch archive**. It is not a fork of the Linux kernel and does not claim that archived or submitted patches were accepted upstream.
 
+## Repository layout
 
+```text
+.
+├── patches/          # Upstream patch submissions and their documentation
+├── configs/          # Kernel configuration files used for local testing
+└── archive/          # Historical experiments kept for provenance
+```
+
+## Upstream work
+
+| ID | Area | Status |
+|---|---|---|
+| P01 | USB / sisusbvga | Submitted upstream; awaiting review |
+
+### P01 — sisusbvga open-path deadlock
+
+**Subject:** `USB: sisusbvga: avoid initializing device in open`
+
+The patch removes synchronous device initialization from the USB character-device `.open()` path and treats high-speed probe-time initialization failure as a probe failure. The work was motivated by a syzbot report involving a task hang around `usb_register_dev()`.
+
+> **Important:** submitted is not the same as accepted. Acceptance will only be recorded after the upstream kernel mailing-list process confirms it.
+
+## Development principles
+
+- Prefer small, reviewable upstream patches.
+- Reproduce and understand the reported failure before changing code.
+- Build and run relevant validation before submission.
+- Follow Linux kernel coding style and commit-message conventions.
+- Record upstream status separately from local experimentation.
+
+## Links
+
+- Linux kernel: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+- syzbot: https://syzkaller.appspot.com/
+
+## Author
+
+Ayush Yaduvanshi (`nerv-EvanG`)
