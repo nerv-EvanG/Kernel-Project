@@ -1,0 +1,29 @@
+From f6b703558d7e82d0808813a91e7d9bd095e6ab6f Mon Sep 17 00:00:00 2001
+From: Ayush Yaduvanshi <ayush37735@gmail.com>
+Date: Tue, 29 Sep 2026 15:26:36 +0530
+Subject: [PATCH net-next] sfc: siena: fix kernel-doc description for
+ efx_ptp_timeset
+
+Remove excess @valid struct member description from
+
+efx_ptp_timeset.
+
+Signed-off-by: Ayush Yaduvanshi <ayush37735@gmail.com>
+---
+ drivers/net/ethernet/sfc/siena/ptp.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/sfc/siena/ptp.c b/drivers/net/ethernet/sfc/siena/ptp.c
+index 0b723a127364..d643e41ae773 100644
+--- a/drivers/net/ethernet/sfc/siena/ptp.c
++++ b/drivers/net/ethernet/sfc/siena/ptp.c
+@@ -196,7 +196,6 @@ struct efx_ptp_event_rx {
+  * @wait: Number of NIC clock ticks between hardware timestamp being read and
+  *          host end time being seen
+  * @window: Difference of host_end and host_start
+- * @valid: Whether this timeset is valid
+  */
+ struct efx_ptp_timeset {
+ 	u32 host_start;
+-- 
+2.53.0

@@ -1,0 +1,35 @@
+From 8092d83be2431a6968e4c8065d61205fc2ac02f9 Mon Sep 17 00:00:00 2001
+From: Ayush Yaduvanshi <ayush37735@gmail.com>
+Date: Fri, 25 Sep 2026 04:06:50 +0530
+Subject: [PATCH] ice: dpll: fix kernel-doc parameter descriptions
+
+Remove stale @count and @cgu parameter descriptions from
+ice_dpll_init_fwnode_pins() and ice_dpll_init_pins_e825().
+
+Signed-off-by: Ayush Yaduvanshi <ayush37735@gmail.com>
+---
+ drivers/net/ethernet/intel/ice/ice_dpll.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+index 85a74cd6ea1f..d00a2fb683d1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+@@ -3919,7 +3919,6 @@ ice_dpll_init_fwnode_pin(struct ice_dpll_pin *pin, const char *name)
+  * @pf: board private structure
+  * @pins: pointer to pins array
+  * @start_idx: starting index for pins
+- * @count: number of pins to initialize
+  *
+  * Initialize input pins for E825 RCLK support. The parent pins (rclk0, rclk1)
+  * are expected to be defined by the system firmware (ACPI). This function
+@@ -4025,7 +4024,6 @@ static int ice_dpll_init_txclk_pins(struct ice_pf *pf, int start_idx)
+ /**
+  * ice_dpll_init_pins_e825 - init pins and register pins with a dplls
+  * @pf: board private structure
+- * @cgu: if cgu is present and controlled by this NIC
+  *
+  * Initialize directly connected pf's pins within pf's dplls in a Linux dpll
+  * subsystem.
+-- 
+2.53.0
