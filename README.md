@@ -6,6 +6,15 @@ This repository is a **development portfolio and patch archive**. It is not a fo
 
 ## Portfolio
 
+| ID | Area | Focus | Date |
+|---|---|---|---|
+| P01 | USB / sisusbvga | Avoid device initialization in the character-device `.open()` path | 2026-09-06 |
+| P02 | Intel ICE / DPLL | Remove stale kernel-doc parameter descriptions | 2026-09-25 |
+| P03 | Intel IDPF | Remove stale kernel-doc parameter descriptions | 2026-09-25 |
+| P04 | SFC | Remove excess `@valid` kernel-doc member description | 2026-09-29 |
+| P05 | SFC Siena | Remove excess `@valid` kernel-doc member description | 2026-09-29 |
+| P06 | ATLX | Add missing `@txqueue` kernel-doc parameter description | 2026-09-29 |
+
 
 ## Repository layout
 
