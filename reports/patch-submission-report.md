@@ -13,8 +13,9 @@ A patch being submitted is not the same as being accepted, so I have kept those 
 | State | Count | Notes |
 |---|---:|---|
 | Applied / accepted in a maintainer tree | **5** | Four netdev/net-next patches and one AMDGPU patch acknowledged as applied |
-| Submitted; no application confirmed here | **7** | Includes patches with review feedback and the recent AMD perf series |
-| Investigated, not submitted | **2 work items** | Dropped after technical conflicts or because equivalent work was already underway |
+| Submitted; no application confirmed here | **5** | Includes patches with maintainer feedback; no merge is recorded |
+| Prepared; dry-run only | **2** | AMD Power/IBS series built and dry-run checked; actual send is not confirmed here |
+| Investigated, not submitted | **3 work items** | Dropped or held after technical review, conflicts, or novelty checks |
 
 *These are contribution-tracking counts, not an official LKMP graduation decision. Programme eligibility is determined by the mentorship team.*
 
@@ -34,18 +35,25 @@ A patch being submitted is not the same as being accepted, so I have kept those 
 |---|---|---|---|
 | USB / sisusbvga | [v1 thread](https://lists.openwall.net/linux-kernel/2026/09/05/868) · [v2 thread](https://lists.openwall.net/linux-kernel/2026/09/07/738) | Moved graphics-device initialization away from the character-device `.open()` path; v2 also stops initialization after the first failed USB request and fails probe on initialization failure. | v2 was tested by syzbot and the reported hang was not reproduced. Review is still outstanding; Greg Kroah-Hartman noted the fake-device report was low priority. No merge is recorded here. |
 | Solarflare Siena | [sfc: siena: fix kernel-doc description for efx_ptp_timeset](https://lists.openwall.net/linux-kernel/2026/09/29/1239) | Removed the excess `@valid` description from the Siena `efx_ptp_timeset` structure. | Received a `Reviewed-by` from Joe Damato; application is not confirmed in this report. |
-| Intel ICE | [ice: Modernize ice_vsi_free() with scope-based guard(mutex)](https://lore-kernel.gnuweeb.org/intel-wired-lan/20261014110552.56976-1-ayush37735%40gmail.com/) | Replaced the explicit `mutex_lock()` / `mutex_unlock()` pair with `guard(mutex)` in `ice_vsi_free()`. | Review raised concerns about the missing commit message, clean-up-only scope, and the longer mutex critical section. No merge is recorded. |
+| Intel ICE | [ice: Modernize ice_vsi_free() with scope-based guard(mutex)](https://lore-kernel.gnuweeb.org/intel-wired-lan/20261014110552.56976-1-ayush37735%40gmail.com/) | Replaced the explicit `mutex_lock()` / `mutex_unlock()` pair with `guard(mutex)` in `ice_vsi_free()`. | Review raised concerns about the missing commit message, clean-up-only scope, and the longer mutex critical section. An automated Sashiko review also flagged a possible TOCTOU/UAF issue, which would need investigation. No merge is recorded. |
 | 8390 | [net: 8390: fix kernel-doc warning for __ei_tx_timeout](https://lists.openwall.net/linux-kernel/2026/10/26/2228) | Worked on correcting the kernel-doc description for `__ei_tx_timeout()`. | Simon Horman pointed out that the driver is orphaned and that netdev discourages standalone clean-up patches. No acceptance is recorded. |
 | Broadcom bnx2x | [bnx2x: fix kernel-doc for bnx2x_rss()](https://lore-kernel.gnuweeb.org/netdev/20261109211719.114004-1-ayush37735%40gmail.com/T/) | Updated the stale function name in the kernel-doc block and removed the obsolete `@ind_table` parameter. | Submitted on 9 Nov 2026; no review or application is recorded here yet. |
-| AMD Power PMU | Part of the [2-patch AMD perf series](https://lore.kernel.org/linux-perf-users/20261112234547.18226-1-ayush37735%40gmail.com/) | Checks the return from `cpuhp_setup_state()` and removes the registered hotplug state if PMU registration fails. | Submitted on 13 Nov 2026; awaiting review. `power.o` compiled successfully. |
-| AMD IBS | Part of the [2-patch AMD perf series](https://lore.kernel.org/linux-perf-users/20261112234547.18226-3-ayush37735%40gmail.com/) | Checks CPU-hotplug setup, unwinds the hotplug state and syscore registration on failure, and resets `ibs_caps`. | Submitted on 13 Nov 2026; awaiting review. `ibs.o` compiled successfully. |
 
-The AMD Power/IBS series was developed with AI-assisted technical discussion during revision. I am checking its eligibility with the LFX mentors separately and am not treating it as confirmed mentorship credit.
+
+## Prepared for submission
+
+| Subsystem | Patch | Technical focus | Validation / status |
+|---|---|---|---|
+| AMD Power PMU | [Part 1 of the AMD perf series](https://lore.kernel.org/linux-perf-users/20261112234547.18226-2-ayush37735%40gmail.com/) | Checks `cpuhp_setup_state()` and unwinds the hotplug state if `perf_pmu_register()` fails. | `power.o` compiled; checkpatch and diff checks passed; `git send-email --dry-run` passed. Actual email delivery is not confirmed in this report. |
+| AMD IBS | [Part 2 of the AMD perf series](https://lore.kernel.org/linux-perf-users/20261112234547.18226-3-ayush37735%40gmail.com/) | Checks CPU-hotplug setup, unwinds the hotplug state and syscore registration on failure, and resets `ibs_caps`. | `ibs.o` compiled; checkpatch and diff checks passed; `git send-email --dry-run` passed. Actual email delivery is not confirmed in this report. |
+
+The AMD Power/IBS series involved AI-assisted technical discussion during revision. I am checking its eligibility with the LFX mentors separately and am not treating it as confirmed mentorship credit.
 
 ## Investigations that did not become submissions
 
 - **YNL C generator:** I explored normalizing family names and avoiding generated enums when a family already uses UAPI-defined declarations. The generated-header build exposed enum redeclaration conflicts with UAPI headers, so I stopped rather than send a patch that did not build cleanly.
 - **PCIe M.2 power sequencing:** I investigated a possible fix, but equivalent work had already been submitted upstream by the time I was ready. I did not send a duplicate.
+- **r8169 guard-based cleanup:** I explored a guard-based locking change as a driver-maintenance candidate. I have no upstream submission recorded for it, so it is not included in the submission count.
 - **VIMC signature patch:** The repository also keeps an early VIMC patch used during initial kernel build and patch-workflow practice. I treat it as a learning artifact, not as one of the applied contributions above.
 
 ## How I work
