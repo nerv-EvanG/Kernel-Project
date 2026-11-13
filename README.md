@@ -37,14 +37,17 @@ For the full contribution log — applied patches, upstream submissions and revi
 
 The VIMC patch at the repository root is the original foundational test patch used to verify kernel build/module-loading work.
 
-## Contribution themes
+## Engineering work
 
-The current archive covers:
+My kernel work is broader than documentation fixes. It includes tracing driver behavior, following initialization and teardown paths, checking error handling, and preparing focused changes for upstream review.
 
-- Linux kernel documentation correctness and kernel-doc hygiene.
-- Networking driver maintenance across Intel, Atheros, and Solarflare code.
-- USB character-device open-path behavior and syzbot-reported locking/blocking concerns.
-- Building, patching, checking, and preparing Linux kernel changes for upstream contribution.
+- **Driver lifecycle and failure handling:** USB device initialization, CPU-hotplug registration, PMU/IBS setup, and cleanup when initialization or registration fails.
+- **Networking drivers:** Maintenance and review across Intel ICE/IDPF, Broadcom bnx2x, Atheros ATLX, Solarflare SFC/Siena, and the 8390 subsystem.
+- **Locking and resource management:** Investigation of mutex-guard conversions, resource-release paths, and driver cleanup behavior.
+- **Kernel interfaces and documentation:** Kernel-doc consistency fixes where declarations, parameters, or structure members no longer matched their documentation.
+- **Kernel development workflow:** Building affected objects, checking diffs and patch style, preparing patch series, and tracking upstream review.
+
+The [patch submission report](reports/patch-submission-report.md) records the individual changes, their technical scope, and their current upstream status.
 
 ## Upstream status
 
