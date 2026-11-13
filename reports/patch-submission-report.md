@@ -2,9 +2,9 @@
 
 **Ayush Yaduvanshi** · `nerv-EvanG`  
 **Updated:** 13 November 2026  
-**Focus:** Linux kernel drivers, networking, USB, AMD perf, and kernel documentation
+**Focus:** Driver lifecycle, networking, CPU hotplug, performance monitoring, locking, and kernel maintenance
 
-I have been contributing to the Linux kernel by picking up small, concrete issues, tracing them through the code, making focused changes, and sending patches to the relevant mailing lists. This report is my running record of that work — including patches that made it into subsystem trees, patches still in review, and investigations I decided not to submit.
+Most of my work has involved understanding how existing kernel code behaves, tracing issues through driver and subsystem paths, and making focused changes where the behavior or implementation needs attention. That has included initialization and teardown handling, error-path cleanup, networking-driver maintenance, locking investigations, and kernel-doc fixes. This report tracks the patches I worked on across their full lifecycle — applied changes, upstream submissions, prepared work, and investigations I decided not to send.
 
 A patch being submitted is not the same as being accepted, so I have kept those states separate.
 
