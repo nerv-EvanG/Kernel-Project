@@ -4,6 +4,10 @@ Upstream Linux kernel development work by Ayush Yaduvanshi.
 
 This repository is a **development portfolio and patch archive**. It is not a fork of the Linux kernel and does not claim that archived or submitted patches were accepted upstream.
 
+## Patch submission report
+
+For the full contribution log — applied patches, upstream submissions and review feedback, prepared patch series, and investigations that I chose not to submit — see the [Linux Kernel Patch Submission Report](reports/patch-submission-report.md).
+
 ## Portfolio
 
 | ID | Area | Focus | Date |
